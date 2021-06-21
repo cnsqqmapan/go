@@ -12,9 +12,9 @@ type wrapError struct {
 }
 
 
-func ErrorInfo(sql string) error {
-    return errors.Wrapf(sql,fmt.Sprintf("sql:%s %+v",sql))
-}
+//func ErrorInfo(sql string) error {
+   // return errors.Wrapf(sql,fmt.Sprintf("sql:%s %+v",sql))
+//}
 
 type errorString string
 
@@ -35,11 +35,11 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
    if errors.Is(ErrorType, New("code.NotFound")) {
-        ErrorInfo("code.NotFound")
+       // ErrorInfo("code.NotFound")
     } 
 
-//    http.HandleFunc("/", HelloHandler)
- //   http.ListenAndServe(":9000", nil)
+    http.HandleFunc("/", HelloHandler)
+    http.ListenAndServe(":9002", nil)
 }
 
 
